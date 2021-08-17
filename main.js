@@ -63,7 +63,7 @@ function organize(sp) {//sp == source_path
 
 }
 function readdirectory(current_path, destination_path) {
-    console.log("Transfering files...");
+    console.log("Transferring files...");
     var files = fs.readdirSync(current_path);
     for (let i = 0; i < files.length; i++) {
         if (path.extname(path.join(current_path, files[i])) != '') {
