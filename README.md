@@ -26,5 +26,15 @@ play_with_files currently support three commands:
 
 ` -help
   -organize
-  -tree`
-  
+  -tree
+  `
+ 
+ 
+ #### DesktopView before : 
+ <img src = "images/before.png" alt= "before">
+ 
+ #### Usage :
+ <img src = "images/usage.png" alt= "use">
+ 
+ #### DesktopView after :
+  <img src = "images/after.png" alt= "use">
