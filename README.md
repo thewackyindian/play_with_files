@@ -13,12 +13,18 @@ Then....
  `npm install play_with_files`
 
 then....
+
+
  `wacky -help`
+ 
  `wacky -organize <directory-path> `
+ 
  and related commands.
 
 ## Commands
 play_with_files currently support three commands:
+
 ` -help
   -organize
   -tree`
+  
