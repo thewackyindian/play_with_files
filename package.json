@@ -1,0 +1,19 @@
+{
+  "name": "play_with_files",
+  "version": "1.0.2",
+  "description": "\"Helps managing clutter of files in a directory\"",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "file",
+    "organizer",
+    "fileorganizer"
+  ],
+  "author": "thewackyindian",
+  "license": "ISC",
+  "bin": {
+    "wacky": "main.js"
+  }
+}
