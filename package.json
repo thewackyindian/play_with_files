@@ -15,5 +15,13 @@
   "license": "ISC",
   "bin": {
     "wacky": "main.js"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thewackyindian/play_with_files.git"
+  },
+  "bugs": {
+    "url": "https://github.com/thewackyindian/play_with_files/issues"
+  },
+  "homepage": "https://github.com/thewackyindian/play_with_files#readme"
 }
