@@ -1,12 +1,14 @@
 # play_with_files
-Helps managing clutter of files in a directory
+Helps managing clutter of files in a directory.
+
 Also diplays tree hierarchal structure of the sepcified directory.
 
 # Installation
 
 Make sure you have node installed.
+
 You can get it here:
- `https://nodejs.org/en/`
+ https://nodejs.org/en/
 
 Then....
 
