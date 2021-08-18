@@ -96,12 +96,16 @@ function tree(sp){
 function dfs(start,indent) {
     var files = fs.readdirSync(start);
     for (let i = 0; i < files.length; i++) {
-        if (path.extname(path.join(start, files[i])) != '') {
+        stats = fs.statSync(path.join(start, files[i]));
+        if(stats.isFile()){
             console.log(indent + "|----- " + files[i]);
         }
-        else {
+        else if(stats.isDirectory()){
             console.log(indent + "|_____ " + files[i]);
             dfs(path.join(start,files[i]), indent + '\t');
+        }
+        else {
+            continue;
         }
     }
 }
