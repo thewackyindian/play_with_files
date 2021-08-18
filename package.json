@@ -23,5 +23,11 @@
   "bugs": {
     "url": "https://github.com/thewackyindian/play_with_files/issues"
   },
-  "homepage": "https://github.com/thewackyindian/play_with_files#readme"
+  "homepage": "https://github.com/thewackyindian/play_with_files#readme",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  },
+  "devDependencies": {
+    "readline-sync":"1.4.10"
+  }
 }

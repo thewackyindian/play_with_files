@@ -24,11 +24,12 @@ then....
  and related commands.
 
 ## Commands
-play_with_files currently support three commands:
+play_with_files currently support following commands:
 
 ` -help
   -organize
   -tree
+  -revert
   `
  
  
