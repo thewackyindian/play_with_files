@@ -12,7 +12,7 @@ You can get it here:
 
 Then....
 
- `npm install play_with_files`
+ `npm install -g play_with_files`
 
 then....
 
