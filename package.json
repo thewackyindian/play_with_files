@@ -1,6 +1,6 @@
 {
   "name": "play_with_files",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "\"Helps managing clutter of files in a directory\"",
   "main": "main.js",
   "scripts": {
