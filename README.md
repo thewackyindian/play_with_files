@@ -1,7 +1,7 @@
 # play_with_files
 Helps managing clutter of files in a directory.
 
-Also diplays tree hierarchal structure of the sepcified directory.
+Also displays tree hierarchal structure of the specified directory.
 
 # Installation
 
