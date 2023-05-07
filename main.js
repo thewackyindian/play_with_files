@@ -20,6 +20,9 @@ let folder = {
     app_setups: ["exe", "pkg", "deb", "dmg"],
     code:  ["cpp", "c", "java", "rust", "py", "js", "html", "css", "pascal","json"],
 };
+
+
+
 let folderin = "";
 switch (arguments[0]){
     case '-help':
