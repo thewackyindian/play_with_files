@@ -14,17 +14,17 @@ var arguments = process.argv.slice(2);
 //directory_path = arguments[2]
 let folder = {
     media: ["mkv", "mp4", "mp3"],
-    pictures: ["jpg","png","jpeg"],
-    archives: ["rar", "zip", "tar", "iso", "xz", "7z"],
-    documents: ["docx", "doc", "pdf", "odt", "xls", "txt", "xlxs", "odp", "odf", "ps", "tex"],
+    pictures: ["jpg", "png", "jpeg"],
+    archives: ["rar", "zip", "tar", "iso", "xz", "7z", "snap"],
+    documents: ["docx", "doc", "pdf", "odt", "xls", "xlsx", "txt", "xlxs", "odp", "odf", "ps", "tex", "md"],
     app_setups: ["exe", "pkg", "deb", "dmg"],
-    code:  ["cpp", "c", "java", "rust", "py", "js", "html", "css", "pascal","json"],
+    code: ["cpp", "c", "java", "rust", "py", "js", "html", "css", "pascal", "json", "ejs", "go", "sh"],
 };
 
 
 
 let folderin = "";
-switch (arguments[0]){
+switch (arguments[0]) {
     case '-help':
         help();
         break;
@@ -42,12 +42,13 @@ switch (arguments[0]){
         break;
 }
 function check(ext) {
+    // console.log(ext);
     for (var t in folder) {
         let sub_f = folder[t];
-        for (let i = 0; i < t.length; i++) {
+        for (let i = 0; i < sub_f.length; i++) {
             if (ext == sub_f[i]) {
                 return t;
-            } 
+            }
         }
     }
     return "miscellaneous";
@@ -64,8 +65,8 @@ function help() {
 function organize(sp) {//sp == source_path
     if (sp == undefined) {
         sp = process.cwd();
-    } 
-    if(!fs.existsSync(sp)) {
+    }
+    if (!fs.existsSync(sp)) {
         console.log("Kindly enter correct path");
         return;
     }
@@ -73,16 +74,16 @@ function organize(sp) {//sp == source_path
     if (folderin == '') {
         folderin = "organized";
     }
-    let ofpath = path.join(sp,folderin);
+    let ofpath = path.join(sp, folderin);
     if (fs.existsSync(ofpath)) {
     }
     else {
         fs.mkdirSync(ofpath);
     }
-    readdirectory(sp,ofpath);
+    readdirectory(sp, ofpath);
 }
 function readdirectory(current_path, destination_path) {
-    console.log("Transferring files to " +  folderin  + " ...");
+    console.log("Transferring files to " + folderin + " ...");
     var files = fs.readdirSync(current_path);
     for (let i = 0; i < files.length; i++) {
         stat = fs.statSync(path.join(current_path, files[i]));
@@ -94,37 +95,37 @@ function readdirectory(current_path, destination_path) {
                 fs.mkdirSync(sfpath);
             }
             let from = path.join(current_path, files[i]);
-            let to = path.join(sfpath,files[i]);
+            let to = path.join(sfpath, files[i]);
             fs.copyFileSync(from, to);
             console.log(files[i] + " ---> " + sub_folder);
-            fs.unlinkSync(from); 
+            fs.unlinkSync(from);
         }
-        
-    }  
+
+    }
 }
-function tree(sp){
+function tree(sp) {
     if (sp == undefined) {
         sp = process.cwd();
-    } 
-    if(!fs.existsSync(sp)) {
+    }
+    if (!fs.existsSync(sp)) {
         console.log("Kindly enter the correct path");
         return;
-    } 
+    }
     console.log("Dsiplaying tree...");
     var dir = path.basename(sp);
     console.log(dir);
     dfs(sp, "\t");
 }
-function dfs(start,indent) {
+function dfs(start, indent) {
     var files = fs.readdirSync(start);
     for (let i = 0; i < files.length; i++) {
         stats = fs.statSync(path.join(start, files[i]));
-        if(stats.isFile()){
+        if (stats.isFile()) {
             console.log(indent + "|----- " + files[i]);
         }
-        else if(stats.isDirectory()){
+        else if (stats.isDirectory()) {
             console.log(indent + "|_____ " + files[i]);
-            dfs(path.join(start,files[i]), indent + '\t');
+            dfs(path.join(start, files[i]), indent + '\t');
         }
         else {
             continue;
@@ -134,36 +135,36 @@ function dfs(start,indent) {
 function revert(sp) {
     if (sp == undefined) {
         sp = process.cwd();
-    } 
-    if(!fs.existsSync(sp)) {
+    }
+    if (!fs.existsSync(sp)) {
         console.log("Kindly enter correct path");
         return;
     }
     console.log("Reverting...");
-    let ofpath = path.join(sp,folderin);
+    let ofpath = path.join(sp, folderin);
     if (fs.existsSync(ofpath)) {
     }
     else {
         console.log("Cannot Revert , kindly check the path again !");
         return;
     }
-    
+
     var dir = path.basename(sp);
-    dfs_revert(sp,ofpath,dir);
+    dfs_revert(sp, ofpath, dir);
 }
-function dfs_revert(start,end,dir) {
+function dfs_revert(start, end, dir) {
     var files = fs.readdirSync(end);
     for (let i = 0; i < files.length; i++) {
         stats = fs.statSync(path.join(end, files[i]));
-        if(stats.isFile()){
+        if (stats.isFile()) {
             let from = path.join(end, files[i]);
-            let to = path.join(start,files[i]);
+            let to = path.join(start, files[i]);
             fs.copyFileSync(from, to);
             console.log(files[i] + " ---> " + dir);
             fs.unlinkSync(from);
         }
-        else if(stats.isDirectory()){
-            dfs_revert(start ,path.join(end,files[i]),dir);
+        else if (stats.isDirectory()) {
+            dfs_revert(start, path.join(end, files[i]), dir);
         }
         else {
             continue;
@@ -172,5 +173,5 @@ function dfs_revert(start,end,dir) {
     if (end !== start) {
         fs.rmdirSync(end);
     }
-    
+
 }
